@@ -19,6 +19,8 @@ class User < ApplicationRecord
     validates :last_name_kana
   end
 
-
+  with_options presence: true, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i } do
+    validates :password
+  end
 
 end
