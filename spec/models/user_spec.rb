@@ -66,16 +66,16 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it 'パスワードが６文字以上でないと登録できないこと' do
-        @user.password = 'abcdef'
-        @user.password_confirmation = "abcdef"
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
-      end
-      it 'パスワードは、確認用を含めて2回入力すること' do
-        @user.password = "ab12"
+        @user.password = 'ab12'
         @user.password_confirmation = "ab12"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      end
+      it 'パスワードは、確認用を含めて2回入力すること' do
+        @user.password = "abcd12"
+        @user.password_confirmation = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'パスワードとパスワード（確認用）は、値の一致が必須であること' do
         @user.password = "123abc"
