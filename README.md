@@ -5,7 +5,7 @@
 | Column             | Type    | Options                  |
 | ------------------ | ------- | ------------------------ |
 | nickname           | string  | null: false              |
-| email              | string  | null: false unique: true |
+| email              | string  | null: false,unique: true |
 | encrypted_password | string  | null: false              |
 | last_name          | string  | null: false              |
 | first_name         | string  | null: false              |
@@ -20,17 +20,17 @@
 
 ## itemsテーブル
 
-| Column                 | Type       | Options                      |
-| ---------------------- | ---------- | ---------------------------- |
-| name                   | string     | null: false                  |
-| info                   | text       | null: false                  |
-| category_id            | integer    | null: false                  |
-| sales_status_id        | integer    | null: false                  |
-| shipping_fee_status_id | integer    | null: false                  |
-| prefecture_id          | integer    | null: false                  |
-| scheduled_delivery_id  | integer    | null: false                  |
-| price                  | integer    | null: false                  |
-| user                   | references | null: false foreign_key: true|
+| Column                 | Type       | Options                       |
+| ---------------------- | ---------- | ----------------------------- |
+| name                   | string     | null: false                   |
+| info                   | text       | null: false                   |
+| category_id            | integer    | null: false                   |
+| sales_status_id        | integer    | null: false                   |
+| shipping_fee_status_id | integer    | null: false                   |
+| prefecture_id          | integer    | null: false                   |
+| scheduled_delivery_id  | integer    | null: false                   |
+| price                  | integer    | null: false                   |
+| user                   | references | null: false, foreign_key: true|
 
 ### Association
 
@@ -41,8 +41,8 @@
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
-| user      | references | null: false   foreign_key: true|
-| item      | references | null: false   foreign_key: true|
+| user      | references | null: false,  foreign_key: true|
+| item      | references | null: false,  foreign_key: true|
 
 ### Association
 
@@ -60,7 +60,7 @@
 | address         | string     | null: false                    |
 | building        | string     |                                |
 | phone_number    | string     | null: false                    |
-| purchase_record | references | null: false  foreign_key: true |
+| purchase_record | references | null: false, foreign_key: true |
 
 ### Association
 
