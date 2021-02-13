@@ -40,7 +40,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status can't be blank")
       end
-      it '配送料の負担 が必須であること' do
+      it '配送料の負担が必須であること' do
         @item.shipping_fee_status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
