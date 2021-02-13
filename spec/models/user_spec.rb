@@ -21,12 +21,12 @@ RSpec.describe User, type: :model do
 
     context "ユーザー登録ができない時" do
       it 'ニックネームが必須であること' do
-        @user.nickname = '' #nicknameの値を空にする
+        @user.nickname = nil #nicknameの値を空にする
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
       end
       it 'メールアドレスが必須であること' do
-        @user.email = '' #emailの値を空にする
+        @user.email = nil #emailの値を空にする
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
       it 'パスワードが必須であること' do
-        @user.password = ''
+        @user.password = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
@@ -84,12 +84,12 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'ユーザー本名は、名字が必須であること' do
-        @user.last_name = ''
+        @user.last_name = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
       it 'ユーザー本名は、名前が必須であること' do
-        @user.first_name = ''
+        @user.first_name = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
@@ -104,12 +104,12 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last name is invalid. Input full-width characters.")
       end
       it 'ユーザー本名のフリガナは、名字が必須であること' do
-        @user.last_name_kana = ''
+        @user.last_name_kana = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
       it 'ユーザー本名のフリガナは、名前が必須であること' do
-        @user.first_name_kana = ''
+        @user.first_name_kana = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
@@ -124,7 +124,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last name kana is invalid. Input full-width katakana characters.")
       end
       it '生年月日が必須であること' do
-        @user.user_birth_date = ''
+        @user.user_birth_date = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("User birth date can't be blank")
       end
