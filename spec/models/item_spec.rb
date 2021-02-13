@@ -30,6 +30,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
+      it '商品の説明が１０００文字を超えると登録できないこと' do
+        @item.info = Faker::Alphanumeric.alpha(number: 1001)
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Info is too long (maximum is 1000 characters)")
+      end
       it 'カテゴリーが必須であること' do
         @item.category_id = nil
         @item.valid?
