@@ -123,10 +123,10 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
+
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <% @items.each do |item| %>
         <li class='list'>
           <%= link_to item_path(item.id) do %>
@@ -134,11 +134,9 @@
             <div class='item-img-content'>
               <%= image_tag item.image.variant(resize: '218x218'), class: 'item-image' if item.image.attached?%>
           
-              <%# 商品が売れていればsold outを表示しましょう %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
-              <%# //商品が売れていればsold outを表示しましょう %>
 
             </div>
             <div class='item-info'>
@@ -146,7 +144,7 @@
                 <%= item.name %>
               </h3>
               <div class='item-price'>
-                <span><%= item.price %>円<br><%= '配送料負担' %></span>
+                <span><%= item.price %>円<br><%= item.shipping_fee_status.name %></span>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
                   <span class='star-count'>0</span>
