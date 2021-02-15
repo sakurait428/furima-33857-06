@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :move_to_index, except: [:index]#, :show]実装時にで追加する
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -19,14 +19,14 @@ class ItemsController < ApplicationController
     end
   end
 
-#  def show
+  def show
 #    @item = Item.find(params[:id])
 #    @category = Category.find(@item.category_id)
 #    @sales_status = SalesStatus.find(@item.sales_status_id)
 #    @shipping_fee_status = ShippingFeeStatus.find(@item.shipping_fee_status_id)
 #    @prefecture = Prefecture.find(@item.prefecture_id)
 #    @scheduled_delivery = ScheduledDelivery.find(@item.scheduled_delivery_id)
-#  end
+  end
 
   private
 
