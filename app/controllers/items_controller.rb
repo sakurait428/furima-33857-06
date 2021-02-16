@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :move_to_index, except: [:index, :show, :edit, :update]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    unless @item.id == current_user.id
+    unless  current_user.id == @item.user.id
       redirect_to root_path
     end
   end
