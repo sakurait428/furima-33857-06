@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
+    @purchase_record = PurchaseRecord.includes(:item)
   end
 
   def new
@@ -22,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase_record = PurchaseRecord.includes(:item)
   end
 
   def edit

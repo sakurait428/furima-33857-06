@@ -123,7 +123,7 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-
+<%= @purchase_record.find(1).item_id %>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
@@ -134,9 +134,11 @@
             <div class='item-img-content'>
               <%= image_tag item.image.variant(resize: '218x218'), class: 'item-image' if item.image.attached?%>
           
+            <% if @purchase_record.exists?(item_id: item.id) == true %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
+            <% end %>
 
             </div>
             <div class='item-info'>
