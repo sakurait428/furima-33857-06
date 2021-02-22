@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @purchase_record_address = PurchaseRecordAddress.new
     @item = Item.find(params[:item_id])
