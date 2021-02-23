@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe PurchaseRecordAddress, type: :model do
 
   before do
-    @purchase_record_address = FactoryBot.build(:purchase_record_address)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @purchase_record_address = FactoryBot.build(:purchase_record_address, user_id: user.id, item_id: item.id)
+    sleep 0.1 # Mysqlエラー回避のため、0.1秒待機
   end
 
   describe '商品購入' do
