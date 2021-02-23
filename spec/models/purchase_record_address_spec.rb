@@ -13,7 +13,7 @@ RSpec.describe PurchaseRecordAddress, type: :model do
     
     context "商品購入ができる時" do
       it '必要な情報を適切に入力すると、商品の購入ができること' do
-          expect(@purchase_record_address).to be_valid
+        expect(@purchase_record_address).to be_valid
       end
       it '建物名を入力しなくても、商品の購入ができること' do
         @purchase_record_address.building = nil
@@ -66,6 +66,16 @@ RSpec.describe PurchaseRecordAddress, type: :model do
         @purchase_record_address.phone_number = "080-123-456"
         @purchase_record_address.valid?
         expect(@purchase_record_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'ユーザーIDが紐付いていないと保存できないこと' do
+        @purchase_record_address.user_id = nil
+        @purchase_record_address.valid?
+        expect(@purchase_record_address.errors.full_messages).to include("User can't be blank")
+      end
+      it '商品IDが紐付いていないと保存できないこと' do
+        @purchase_record_address.item_id = nil
+        @purchase_record_address.valid?
+        expect(@purchase_record_address.errors.full_messages).to include("Item can't be blank")
       end
     end
 
