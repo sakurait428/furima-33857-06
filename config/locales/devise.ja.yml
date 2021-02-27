@@ -32,8 +32,15 @@ ja:
         first_name_kana: 名前（カナ）
         last_name_kana: 名字（カナ）
       item:
-        text: テキスト
-        image: 画像
+        image: 出品画像 
+        name: 商品名 
+        info: 商品の説明
+        price: 販売価格
+        category_id: カテゴリー
+        sales_status_id: 商品の状態
+        shipping_fee_status_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        scheduled_delivery_id: 発送までの日数
     models:
       user: ユーザー
   devise:

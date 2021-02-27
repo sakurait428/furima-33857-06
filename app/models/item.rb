@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   end
 
-  with_options presence: true,numericality: { other_than: 1 } do
+  with_options presence: true,numericality: { other_than: 1 , message: 'を選択して下さい'} do
     validates :category_id
     validates :sales_status_id
     validates :shipping_fee_status_id
