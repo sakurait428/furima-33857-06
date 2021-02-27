@@ -38,12 +38,12 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが必須であること' do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category を選択して下さい")
       end
       it 'カテゴリーが未選択では登録できないこと' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("Category を選択して下さい")
       end
       it '商品の状態が必須であること' do
         @item.sales_status_id = nil
@@ -53,7 +53,7 @@ RSpec.describe Item, type: :model do
       it '商品の状態が未選択では登録できないこと' do
         @item.sales_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sales status must be other than 1")
+        expect(@item.errors.full_messages).to include("Sales status を選択して下さい")
       end
       it '配送料の負担が必須であること' do
         @item.shipping_fee_status_id = nil
@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
       it '配送料の負担が未選択では登録できないこと' do
         @item.shipping_fee_status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee status must be other than 1")
+        expect(@item.errors.full_messages).to include("Shipping fee status を選択して下さい")
       end
       it '発送元の地域が必須であること' do
         @item.prefecture_id = nil
@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
       it '発送元の地域が未選択では登録できないこと' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture を選択して下さい")
       end
       it '発送までの日数が必須であること' do
         @item.scheduled_delivery_id = nil
@@ -83,7 +83,7 @@ RSpec.describe Item, type: :model do
       it '発送までの日数が未選択では登録できないこと' do
         @item.scheduled_delivery_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Scheduled delivery must be other than 1")
+        expect(@item.errors.full_messages).to include("Scheduled delivery を選択して下さい")
       end
       it '販売価格が必須であること' do
         @item.price = nil
@@ -93,17 +93,17 @@ RSpec.describe Item, type: :model do
       it '販売価格が300円未満だと登録できないこと' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include("Price は300円以上にして下さい")
       end
       it '販売価格が9999999を超えると登録できないこと' do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include("Price は10,000,000円未満にして下さい")
       end
       it '販売価格は半角数字のみ保存可能であること' do
         @item.price = "１２３４５"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include("Price は半角数字で入力して下さい")
       end
     end
   end
